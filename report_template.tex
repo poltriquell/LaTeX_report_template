@@ -1,0 +1,74 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel} % needed for language
+\usepackage[a4paper]{geometry} % needed for page format
+\usepackage{graphicx} % needed for images
+\usepackage[export]{adjustbox} % needed for adjustable images
+\usepackage[breaklinks=true]{hyperref} % needed for a clickable table of contents
+\usepackage{fancyhdr} % needed for fancy header 
+\usepackage{minted} % needed for formatting code
+\usepackage{imakeidx} % needed for multiple index
+\usepackage{blindtext} % needed for generating dummy text all project long
+\usepackage[backend=biber, style=alphabetic, sorting=ynt]{biblatex} % needed for bibliography
+\usepackage{newunicodechar}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\makeindex[columns=3, title=Alphabetical Index, intoc]
+\addto\captionsspanish{% Replace "spanish" with the language you use
+	\renewcommand{\contentsname}%
+	{Índice de Contenidos}%
+}
+\addto\captionsenglish{% replace "english" with the language you use
+	\renewcommand{\contentsname}
+	{Index of Contents}}
+\addbibresource{mybibliography.bib} % add file for bibliography
+
+% needed for group bar chart
+\usepackage{colortbl}
+\usepackage{rotating}
+\usepackage{pgfplots,pgfplotstable}
+\usepackage{scalefnt}
+\usepackage{tikz}
+% needed for group bar chart
+
+% needed for page headers and footnotes
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\textit{Degree Subject Name}}
+\fancyhead[RE,LO]{Assignment's title name}
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+% needed for page headers and footnotes
+
+
+
+\begin{document}
+
+% include the title page, the abstract page and the acknowledgements page
+\input{title.tex}
+\thispagestyle{empty} % remove the header from this page
+\input{./abstract.tex}
+\newpage
+\thispagestyle{empty} % remove the header from this page
+\input{./acknowledgements.tex}
+\newpage
+
+% include index of contents and list of figures/tables
+\thispagestyle{empty} % remove the header from this page
+\tableofcontents
+\listoffigures
+\listoftables
+\clearpage
+\printindex
+
+% include introduction page
+\input{./introduction.tex}
+\input{./contents.tex}
+
+
+\medskip
+
+% include references page
+% \printbibliography[heading=bibintoc, title={Bibliografía}]
+
+\end{document}
